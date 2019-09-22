@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<classPathEntry location="E:\maven_repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>-->
+
+    <context id="DemoTables" targetRuntime="MyBatis3">
+        <!--mybatis生成entity实体类时使用lombok的插件，参照csdn：https://blog.csdn.net/qq_41958793/article/details/89020093-->
+        <plugin type="org.mybatis.generator.plugins.lombok.LombokPlugin"></plugin>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3307/demo?allowMultiQueries=true"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+        
+
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.swagger2.entity.teacher" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mappings"  targetProject=".\src\main\resources\mybatis">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.swagger2.dao.teacher"  targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="methodNameCalculator" value="extended"/>
+        </javaClientGenerator>
+
+        <table tableName="teacher" domainObjectName="Teacher">
+            <property name="useActualColumnNames" value="false"/>
+            <columnOverride column="id" javaType="java.lang.Integer"></columnOverride>
+            <columnOverride column="sex" javaType="java.lang.Integer"></columnOverride>
+        </table>
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="noxmlconfigwebapp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="no-xml-config-webapp.war">
+      <element id="artifact" artifact-name="noxmlconfigwebapp:war exploded" />
+    </root>
+  </artifact>
+</component>
